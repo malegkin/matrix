@@ -47,7 +47,7 @@ struct Matrix {
             return std::move(out);
         }
 
-        Index& operator++()
+        Index operator++()
         {
             if ( isEnd() )
                 throw new std::out_of_range("index.operator++ ");
@@ -65,13 +65,12 @@ struct Matrix {
             return *this;
         }
 
-        Index& operator++(int)
+        Index operator++(int)
         {
             Index out(*this);
             operator++();
-            return out;
+            return std::move(out);
         }
-
 
         bool operator==(const Index& rhs) const  {
             // check end of index
@@ -106,6 +105,10 @@ struct Matrix {
 
         auto toTuple() const {
             return to_tuple(_offsets);
+        }
+
+        auto toArray() const {
+            return _offsets;
         }
         /*
         Index& operator[](index_offset_type i){

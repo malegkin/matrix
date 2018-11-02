@@ -8,27 +8,35 @@
 
 BOOST_AUTO_TEST_SUITE( test_matrix )
 
-    BOOST_AUTO_TEST_CASE( test_matrix__index_increment ) {
+    BOOST_AUTO_TEST_CASE( test_matrix__index_increment_postfix ) {
 
         Matrix<uint32_t, 10, 3, 3>::Index index;
 
         for (uint32_t i = 0; i < 3; i++){
             for (uint32_t j = 0; j < 3; j++){
-                for (uint32_t k = 0; k < 3; k++){
-                    BOOST_REQUIRE(to_tuple(std::array<uint32_t, 3>({i, j, k})) == std::make_tuple(i, j, k));
+                for (uint32_t k = 0; k < 3; k++) {
+                    BOOST_REQUIRE( index.toTuple() == std::make_tuple(i, j, k) );
+                    index++;
                 }
             }
         }
-
-
-
-        Matrix<int, -1> matrix; // бесконечная матрица int заполнена значениями -1
-        BOOST_REQUIRE(matrix.size() == 0); // все ячейки свободны
-        //auto a = matrix[0][0];
-        //assert(a == -1);
-
-        BOOST_REQUIRE( true );
     }
+
+    BOOST_AUTO_TEST_CASE( test_matrix__index_increment_prefix ) {
+
+        Matrix<uint32_t, 10, 3, 3>::Index index;
+
+        for (uint32_t i = 0; i < 3; i++){
+            for (uint32_t j = 0; j < 3; j++){
+                for (uint32_t k = 0; k < 3; k++) {
+                    BOOST_REQUIRE( index.toTuple() == std::make_tuple(i, j, k) );
+                    ++index;
+                }
+            }
+        }
+    }
+
+
 
 
 
