@@ -6,6 +6,11 @@
 #include <list>
 #include <map>
 #include <unordered_map>
+#include <algorithm>
+#include <numeric>
+#include <array>
+#include <stdexcept>
+#include <tuple>
 
 
 //simple blunt solution for output only in debug build

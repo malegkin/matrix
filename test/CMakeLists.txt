@@ -7,4 +7,5 @@ function(add_new_test test_name)
 endfunction()
 
 add_new_test(test_matrix)
+add_new_test(test_traits)
 
