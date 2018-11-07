@@ -5,6 +5,9 @@
 #define BOOST_TEST_MODULE test_matrix
 #include <boost/test/unit_test.hpp>
 
+#include <boost/fusion/algorithm/iteration/for_each.hpp>
+#include <boost/fusion/include/for_each.hpp>
+#include <boost/fusion/adapted/std_tuple.hpp>
 #define LOG_LEVEL all
 
 BOOST_AUTO_TEST_SUITE( test_traits )
@@ -38,6 +41,16 @@ BOOST_AUTO_TEST_SUITE( test_traits )
         BOOST_REQUIRE(512 ==  std::get<512>(t));
         BOOST_REQUIRE(756 ==  std::get<756>(t));
         BOOST_REQUIRE(1024 ==  std::get<1024>(t));
+
+
+        std::vector<uint32_t> v;
+        v.reserve(1025);
+        boost::fusion::for_each(t, [&](auto & a ){
+            v.push_back(a);
+        });
+
+        BOOST_REQUIRE( std::equal(begin(arr), end(arr), begin(v)) );
+
    }
 
 BOOST_AUTO_TEST_SUITE_END()
