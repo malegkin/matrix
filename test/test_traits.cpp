@@ -23,9 +23,9 @@ BOOST_AUTO_TEST_SUITE( test_traits )
 
 
 
-        std::array<uint32_t, 1024> arr;
+        std::array<uint32_t, 1025> arr;
         uint32_t i = 0;
-        std::generate_n( begin(arr), 1024, [&](){return i++;});
+        std::generate_n( begin(arr), 1025, [&](){return i++;});
 
         auto t = to_tuple(arr);
 
@@ -36,10 +36,8 @@ BOOST_AUTO_TEST_SUITE( test_traits )
         BOOST_REQUIRE(128 ==  std::get<128>(t));
         BOOST_REQUIRE(256 ==  std::get<256>(t));
         BOOST_REQUIRE(512 ==  std::get<512>(t));
-        //BOOST_REQUIRE(1024 ==  std::get<1024>(t));
-        //compile error static_assert failed "tuple_element index out of range"
-        //    static_assert(_Ip < sizeof...(_Types), "tuple_element index out of range");
-
-    }
+        BOOST_REQUIRE(756 ==  std::get<756>(t));
+        BOOST_REQUIRE(1024 ==  std::get<1024>(t));
+   }
 
 BOOST_AUTO_TEST_SUITE_END()

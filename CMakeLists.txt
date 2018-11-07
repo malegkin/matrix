@@ -23,7 +23,7 @@ set( CMAKE_CXX_STANDARD_REQUIRED ON )
 include_directories("${CMAKE_SOURCE_DIR}/include")
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-unused-parameter -ftemplate-depth=1024")
 set(CMAKE_CXX_FLAGS_DEBUG "-g -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 add_definitions(-DBOOST_TEST_DYN_LINK)
