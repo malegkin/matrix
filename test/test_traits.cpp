@@ -26,9 +26,9 @@ BOOST_AUTO_TEST_SUITE( test_traits )
 
 
 
-        std::array<uint32_t, 1025> arr;
+        std::array<uint32_t, 512> arr;
         uint32_t i = 0;
-        std::generate_n( begin(arr), 1025, [&](){return i++;});
+        std::generate_n( begin(arr), 512, [&](){return i++;});
 
         auto t = to_tuple(arr);
 
@@ -38,13 +38,9 @@ BOOST_AUTO_TEST_SUITE( test_traits )
         BOOST_REQUIRE(64 ==  std::get<64>(t));
         BOOST_REQUIRE(128 ==  std::get<128>(t));
         BOOST_REQUIRE(256 ==  std::get<256>(t));
-        BOOST_REQUIRE(512 ==  std::get<512>(t));
-        BOOST_REQUIRE(756 ==  std::get<756>(t));
-        BOOST_REQUIRE(1024 ==  std::get<1024>(t));
-
 
         std::vector<uint32_t> v;
-        v.reserve(1025);
+        v.reserve(512);
         boost::fusion::for_each(t, [&](auto & a ){
             v.push_back(a);
         });
