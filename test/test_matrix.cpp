@@ -10,11 +10,11 @@ BOOST_AUTO_TEST_SUITE( test_matrix )
 
     BOOST_AUTO_TEST_CASE( test_matrix__index_increment_postfix ) {
 
-        Matrix<uint32_t, 10, 3, 3>::Index index;
+        Matrix<uint32_t, 0, 3>::Index index;
 
-        for (uint32_t i = 0; i < 3; i++){
-            for (uint32_t j = 0; j < 3; j++){
-                for (uint32_t k = 0; k < 3; k++) {
+        for (size_t i = 0; i < 10; i++){
+            for (size_t j = 0; j < 10; j++){
+                for (size_t k = 0; k < 10; k++) {
                     BOOST_REQUIRE( index.toTuple() == std::make_tuple(i, j, k) );
                     index++;
                 }
@@ -24,11 +24,11 @@ BOOST_AUTO_TEST_SUITE( test_matrix )
 
     BOOST_AUTO_TEST_CASE( test_matrix__index_increment_prefix ) {
 
-        Matrix<uint32_t, 10, 3, 3>::Index index;
+        Matrix<uint32_t, 0, 3>::Index index;
 
-        for (uint32_t i = 0; i < 3; i++){
-            for (uint32_t j = 0; j < 3; j++){
-                for (uint32_t k = 0; k < 3; k++) {
+        for (size_t i = 0; i < 10; i++){
+            for (size_t j = 0; j < 10; j++){
+                for (size_t k = 0; k < 10; k++) {
                     BOOST_REQUIRE( index.toTuple() == std::make_tuple(i, j, k) );
                     ++index;
                 }
